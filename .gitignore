@@ -1,0 +1,36 @@
+# Python caches and bytecode
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.ipynb_checkpoints/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Game Boy ROM (copyrighted, never commit)
+*.gb
+*.gb.ram
+
+# Local logs and model artifacts
+logs/
+models/
+*.zip
+*.pkl
+
+# Build
+.pypirc

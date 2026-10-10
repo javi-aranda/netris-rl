@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "netris-rl"
+version = "0.1.0"
+description = "Behavior cloning, DAgger and anchored PPO training for the netris environment"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "Javier Aranda" }]
+keywords = ["reinforcement-learning", "ppo", "behavior-cloning", "tetris", "gameboy"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "netris>=0.1,<0.2",
+    "stable-baselines3>=2.0",
+    "torch>=2.0",
+    "tensorboard>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/javi-aranda/netris"
+
+[project.scripts]
+netris-train = "netris_rl.cli.train:main"
+netris-eval = "netris_rl.cli.eval:main"
+netris-collect = "netris_rl.cli.collect:main"
+netris-bc = "netris_rl.cli.bc:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/netris_rl"]
+
+[tool.pytest.ini_options]
+markers = ["rom: requires a GameBoy Tetris ROM"]
+addopts = "-m \"not rom\""
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
